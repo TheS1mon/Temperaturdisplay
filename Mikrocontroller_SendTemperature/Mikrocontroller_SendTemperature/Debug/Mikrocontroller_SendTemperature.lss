@@ -3,27 +3,29 @@ Mikrocontroller_SendTemperature.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000003e  00000000  00000000  00000054  2**1
+  0 .text         000001ac  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  00000092  2**0
+  1 .data         00000000  00800060  00800060  00000200  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  00000092  2**0
+  2 .comment      00000030  00000000  00000000  00000200  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000000c4  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000230  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000020  00000000  00000000  00000100  2**0
+  4 .debug_aranges 000000a0  00000000  00000000  0000026c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000509  00000000  00000000  00000120  2**0
+  5 .debug_info   00000b3b  00000000  00000000  0000030c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000497  00000000  00000000  00000629  2**0
+  6 .debug_abbrev 000006f8  00000000  00000000  00000e47  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000143  00000000  00000000  00000ac0  2**0
+  7 .debug_line   00000597  00000000  00000000  0000153f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  00000c04  2**2
+  8 .debug_frame  00000108  00000000  00000000  00001ad8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000002ec  00000000  00000000  00000c28  2**0
+  9 .debug_str    000003f3  00000000  00000000  00001be0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000010  00000000  00000000  00000f14  2**0
+ 10 .debug_loc    00000174  00000000  00000000  00001fd3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000070  00000000  00000000  00002147  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -56,23 +58,363 @@ Disassembly of section .text:
   2c:	d4 e0       	ldi	r29, 0x04	; 4
   2e:	de bf       	out	0x3e, r29	; 62
   30:	cd bf       	out	0x3d, r28	; 61
-  32:	02 d0       	rcall	.+4      	; 0x38 <main>
-  34:	02 c0       	rjmp	.+4      	; 0x3a <_exit>
+  32:	35 d0       	rcall	.+106    	; 0x9e <main>
+  34:	b9 c0       	rjmp	.+370    	; 0x1a8 <_exit>
 
 00000036 <__bad_interrupt>:
   36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
 
-00000038 <main>:
+00000038 <TWI_Start>:
 
 #include <avr/io.h>
 
+uint8_t TWI_Start()
+{
+	TWCR =0b10100100; // TWINT=1, TWSTA=1, TWEN=1
+  38:	84 ea       	ldi	r24, 0xA4	; 164
+  3a:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR&(1<<TWINT))); // warte auf TWINT=1
+  3c:	06 b6       	in	r0, 0x36	; 54
+  3e:	07 fe       	sbrs	r0, 7
+  40:	fd cf       	rjmp	.-6      	; 0x3c <TWI_Start+0x4>
+	return(TWSR&0xf8); // Status zurueckgeben
+  42:	81 b1       	in	r24, 0x01	; 1
+}
+  44:	88 7f       	andi	r24, 0xF8	; 248
+  46:	08 95       	ret
+
+00000048 <TWI_SLA_R>:
+
+uint8_t TWI_SLA_R()
+{
+	TWDR = 0b10010001; // Slave-Adresse 0x90+W
+  48:	81 e9       	ldi	r24, 0x91	; 145
+  4a:	83 b9       	out	0x03, r24	; 3
+	TWCR = 0b10000100; // TWINT = 1, TWEN = 1
+  4c:	84 e8       	ldi	r24, 0x84	; 132
+  4e:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR & (1<<TWINT))); // warte auf TWINT = 1
+  50:	06 b6       	in	r0, 0x36	; 54
+  52:	07 fe       	sbrs	r0, 7
+  54:	fd cf       	rjmp	.-6      	; 0x50 <TWI_SLA_R+0x8>
+	return (TWSR & 0xF8); // Status zurueckgeben
+  56:	81 b1       	in	r24, 0x01	; 1
+}
+  58:	88 7f       	andi	r24, 0xF8	; 248
+  5a:	08 95       	ret
+
+0000005c <TWI_SLA_W>:
+
+uint8_t TWI_SLA_W()
+{
+	TWDR = 0b00000010; // Slave-Adresse 0x01+W
+  5c:	82 e0       	ldi	r24, 0x02	; 2
+  5e:	83 b9       	out	0x03, r24	; 3
+	TWCR = 0b10000100; // TWINT=1,TWEN=1
+  60:	84 e8       	ldi	r24, 0x84	; 132
+  62:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR&(1<<TWINT))); // warte auf TWINT=1
+  64:	06 b6       	in	r0, 0x36	; 54
+  66:	07 fe       	sbrs	r0, 7
+  68:	fd cf       	rjmp	.-6      	; 0x64 <TWI_SLA_W+0x8>
+	return(TWSR&0xF8); // Status zurueckgeben
+  6a:	81 b1       	in	r24, 0x01	; 1
+}
+  6c:	88 7f       	andi	r24, 0xF8	; 248
+  6e:	08 95       	ret
+
+00000070 <TWI_SEND_DATA>:
+
+uint8_t TWI_SEND_DATA(uint8_t data)
+{
+	TWDR = data;
+  70:	83 b9       	out	0x03, r24	; 3
+	TWCR = 0b10000100; // TWINT = 1, TWEN = 1
+  72:	84 e8       	ldi	r24, 0x84	; 132
+  74:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR&(1<<TWINT))); // warte auf TWINT = 1
+  76:	06 b6       	in	r0, 0x36	; 54
+  78:	07 fe       	sbrs	r0, 7
+  7a:	fd cf       	rjmp	.-6      	; 0x76 <TWI_SEND_DATA+0x6>
+	return (TWSR&0xF8); // Status zurueckgeben
+  7c:	81 b1       	in	r24, 0x01	; 1
+}
+  7e:	88 7f       	andi	r24, 0xF8	; 248
+  80:	08 95       	ret
+
+00000082 <TWI_RECV_ACK>:
+
+uint8_t TWI_RECV_ACK()
+{
+	TWCR = 0b11000100; // TWINT = 1, TWEA = 1 , TWENT = 1
+  82:	84 ec       	ldi	r24, 0xC4	; 196
+  84:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR&(1<<TWINT)));
+  86:	06 b6       	in	r0, 0x36	; 54
+  88:	07 fe       	sbrs	r0, 7
+  8a:	fd cf       	rjmp	.-6      	; 0x86 <TWI_RECV_ACK+0x4>
+	return (TWDR); // Daten zurueckgeben
+  8c:	83 b1       	in	r24, 0x03	; 3
+}
+  8e:	08 95       	ret
+
+00000090 <TWI_RECV_NACK>:
+
+uint8_t TWI_RECV_NACK()
+{
+	TWCR = 0b10000100; // TWINT = 1, TWEN = 1
+  90:	84 e8       	ldi	r24, 0x84	; 132
+  92:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR & (1<<TWINT))); // warte auf TWINT = 1
+  94:	06 b6       	in	r0, 0x36	; 54
+  96:	07 fe       	sbrs	r0, 7
+  98:	fd cf       	rjmp	.-6      	; 0x94 <TWI_RECV_NACK+0x4>
+	return (TWDR); // Daten zurueckgeben
+  9a:	83 b1       	in	r24, 0x03	; 3
+  9c:	08 95       	ret
+
+0000009e <main>:
 
 int main(void)
 {
-  38:	ff cf       	rjmp	.-2      	; 0x38 <main>
+    uint8_t tempHighByte, tempLowByte;
+    
+    TWBR = 0x0A; // Bitratenregister laden
+  9e:	8a e0       	ldi	r24, 0x0A	; 10
+  a0:	80 b9       	out	0x00, r24	; 0
+    TWSR = 0x00; // Vorteiler = 1
+  a2:	11 b8       	out	0x01, r1	; 1
+    
+    DDRD |= (1<<PD2) | (1<<PD3) | (1<<PD4);
+  a4:	81 b3       	in	r24, 0x11	; 17
+  a6:	8c 61       	ori	r24, 0x1C	; 28
+  a8:	81 bb       	out	0x11, r24	; 17
+    // DDRC = 0x00;
+    // PORTC |= (1<<PC4)|(1<<PC5); // Pullup fuer SDA und SCL
+    
+    UARTInit();
+  aa:	46 d0       	rcall	.+140    	; 0x138 <UARTInit>
+	    }
+	    
+	    tempHighByte = TWI_RECV_ACK(); //Temperatur High-Byte
+	    tempLowByte = TWI_RECV_NACK(); //Temperatur Low-Byte
+	    
+	    TWCR = 0x94; // TWINT = 1, TWSTO = 1 , TWEN = 1
+  ac:	0f 2e       	mov	r0, r31
+  ae:	f4 e9       	ldi	r31, 0x94	; 148
+  b0:	ff 2e       	mov	r15, r31
+  b2:	f0 2d       	mov	r31, r0
+	    }
+	    UARTPutChar(0x0D);
+	    UARTPutChar(0x0A);
+	    
+	    _delay_ms(1000);
+	    PORTD ^= (1<<PD4);
+  b4:	d0 e1       	ldi	r29, 0x10	; 16
+    
+    UARTInit();
+    
+    while (1)
+    {
+	    if(TWI_Start() != 0x08)
+  b6:	c0 df       	rcall	.-128    	; 0x38 <TWI_Start>
+  b8:	08 97       	sbiw	r24, 0x08	; 8
+  ba:	09 f0       	breq	.+2      	; 0xbe <main+0x20>
+	    {
+		    PORTD |= (1<<PD2); //Start senden
+  bc:	92 9a       	sbi	0x12, 2	; 18
+	    }
+	    if(TWI_SLA_W() != 0x18)
+  be:	ce df       	rcall	.-100    	; 0x5c <TWI_SLA_W>
+  c0:	48 97       	sbiw	r24, 0x18	; 24
+  c2:	09 f0       	breq	.+2      	; 0xc6 <main+0x28>
+	    {
+		    PORTD |= (1<<PD2); //SLA+W senden (0x90)
+  c4:	92 9a       	sbi	0x12, 2	; 18
+	    }
+	    if(TWI_SEND_DATA(0x00) != 0x28)
+  c6:	80 e0       	ldi	r24, 0x00	; 0
+  c8:	90 e0       	ldi	r25, 0x00	; 0
+  ca:	d2 df       	rcall	.-92     	; 0x70 <TWI_SEND_DATA>
+  cc:	88 97       	sbiw	r24, 0x28	; 40
+  ce:	09 f0       	breq	.+2      	; 0xd2 <main+0x34>
+	    {
+		    PORTD |= (1<<PD2); //Send TEMP_REGISTER
+  d0:	92 9a       	sbi	0x12, 2	; 18
+	    }
+	    if(TWI_Start() != 0x10)
+  d2:	b2 df       	rcall	.-156    	; 0x38 <TWI_Start>
+  d4:	40 97       	sbiw	r24, 0x10	; 16
+  d6:	09 f0       	breq	.+2      	; 0xda <main+0x3c>
+	    {
+		    PORTD |= (1<<PD2); //Restart senden
+  d8:	92 9a       	sbi	0x12, 2	; 18
+	    }
+	    if(TWI_SLA_R() != 0x40)
+  da:	b6 df       	rcall	.-148    	; 0x48 <TWI_SLA_R>
+  dc:	80 34       	cpi	r24, 0x40	; 64
+  de:	91 05       	cpc	r25, r1
+  e0:	09 f0       	breq	.+2      	; 0xe4 <main+0x46>
+	    {
+		    PORTD |= (1<<PD2); //SLA+R senden (0x90)
+  e2:	92 9a       	sbi	0x12, 2	; 18
+	    }
+	    
+	    tempHighByte = TWI_RECV_ACK(); //Temperatur High-Byte
+  e4:	ce df       	rcall	.-100    	; 0x82 <TWI_RECV_ACK>
+  e6:	8c 01       	movw	r16, r24
+	    tempLowByte = TWI_RECV_NACK(); //Temperatur Low-Byte
+  e8:	d3 df       	rcall	.-90     	; 0x90 <TWI_RECV_NACK>
+  ea:	c8 2f       	mov	r28, r24
+	    
+	    TWCR = 0x94; // TWINT = 1, TWSTO = 1 , TWEN = 1
+  ec:	f6 be       	out	0x36, r15	; 54
+	    
+	    UARTPutDecimal(tempHighByte);
+  ee:	c8 01       	movw	r24, r16
+  f0:	99 27       	eor	r25, r25
+  f2:	2d d0       	rcall	.+90     	; 0x14e <UARTPutDecimal>
+	    if(tempLowByte&0x80)
+  f4:	cc 23       	and	r28, r28
+  f6:	3c f4       	brge	.+14     	; 0x106 <main+0x68>
+	    {
+		    UARTPutChar(0x2E);
+  f8:	8e e2       	ldi	r24, 0x2E	; 46
+  fa:	90 e0       	ldi	r25, 0x00	; 0
+  fc:	24 d0       	rcall	.+72     	; 0x146 <UARTPutChar>
+		    UARTPutChar(0x35);
+  fe:	85 e3       	ldi	r24, 0x35	; 53
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+ 102:	21 d0       	rcall	.+66     	; 0x146 <UARTPutChar>
+ 104:	06 c0       	rjmp	.+12     	; 0x112 <main+0x74>
+	    }
+	    else
+	    {
+		    UARTPutChar(0x2E);
+ 106:	8e e2       	ldi	r24, 0x2E	; 46
+ 108:	90 e0       	ldi	r25, 0x00	; 0
+ 10a:	1d d0       	rcall	.+58     	; 0x146 <UARTPutChar>
+		    UARTPutChar(0x30);
+ 10c:	80 e3       	ldi	r24, 0x30	; 48
+ 10e:	90 e0       	ldi	r25, 0x00	; 0
+ 110:	1a d0       	rcall	.+52     	; 0x146 <UARTPutChar>
+	    }
+	    UARTPutChar(0x0D);
+ 112:	8d e0       	ldi	r24, 0x0D	; 13
+ 114:	90 e0       	ldi	r25, 0x00	; 0
+ 116:	17 d0       	rcall	.+46     	; 0x146 <UARTPutChar>
+	    UARTPutChar(0x0A);
+ 118:	8a e0       	ldi	r24, 0x0A	; 10
+ 11a:	90 e0       	ldi	r25, 0x00	; 0
+ 11c:	14 d0       	rcall	.+40     	; 0x146 <UARTPutChar>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
 
-0000003a <_exit>:
-  3a:	f8 94       	cli
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 11e:	2f ef       	ldi	r18, 0xFF	; 255
+ 120:	8f e3       	ldi	r24, 0x3F	; 63
+ 122:	9b e0       	ldi	r25, 0x0B	; 11
+ 124:	21 50       	subi	r18, 0x01	; 1
+ 126:	80 40       	sbci	r24, 0x00	; 0
+ 128:	90 40       	sbci	r25, 0x00	; 0
+ 12a:	e1 f7       	brne	.-8      	; 0x124 <main+0x86>
+ 12c:	00 c0       	rjmp	.+0      	; 0x12e <main+0x90>
+ 12e:	00 00       	nop
+	    
+	    _delay_ms(1000);
+	    PORTD ^= (1<<PD4);
+ 130:	82 b3       	in	r24, 0x12	; 18
+ 132:	8d 27       	eor	r24, r29
+ 134:	82 bb       	out	0x12, r24	; 18
+    }
+ 136:	bf cf       	rjmp	.-130    	; 0xb6 <main+0x18>
 
-0000003c <__stop_program>:
-  3c:	ff cf       	rjmp	.-2      	; 0x3c <__stop_program>
+00000138 <UARTInit>:
+
+#include <avr/io.h>
+
+void UARTInit()
+{
+	UBRRL = 0x17; // 9600 Baudrate
+ 138:	87 e1       	ldi	r24, 0x17	; 23
+ 13a:	89 b9       	out	0x09, r24	; 9
+	UCSRB = 0x18; // RXEN = 1 , TXEN = 1
+ 13c:	88 e1       	ldi	r24, 0x18	; 24
+ 13e:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = 0x86; // Async Mode keine Paritaet, 8Datenbit 1 Stopbit
+ 140:	86 e8       	ldi	r24, 0x86	; 134
+ 142:	80 bd       	out	0x20, r24	; 32
+ 144:	08 95       	ret
+
+00000146 <UARTPutChar>:
+}
+void UARTPutChar(uint8_t val)
+{
+	while(!(UCSRA&(1<<UDRE))); // warte auf freies Senderegister
+ 146:	5d 9b       	sbis	0x0b, 5	; 11
+ 148:	fe cf       	rjmp	.-4      	; 0x146 <UARTPutChar>
+	UDR = val; // sende Daten
+ 14a:	8c b9       	out	0x0c, r24	; 12
+ 14c:	08 95       	ret
+
+0000014e <UARTPutDecimal>:
+}
+void UARTPutDecimal(uint8_t byte)
+{
+ 14e:	cf 93       	push	r28
+ 150:	df 93       	push	r29
+ 152:	d8 2f       	mov	r29, r24
+	UARTPutChar(0x30 + (byte / 100));
+ 154:	89 e2       	ldi	r24, 0x29	; 41
+ 156:	d8 9f       	mul	r29, r24
+ 158:	81 2d       	mov	r24, r1
+ 15a:	11 24       	eor	r1, r1
+ 15c:	82 95       	swap	r24
+ 15e:	8f 70       	andi	r24, 0x0F	; 15
+ 160:	80 5d       	subi	r24, 0xD0	; 208
+ 162:	f1 df       	rcall	.-30     	; 0x146 <UARTPutChar>
+	UARTPutChar(0x30 + ((byte/10)% 10)); // Zehner
+ 164:	9d ec       	ldi	r25, 0xCD	; 205
+ 166:	d9 9f       	mul	r29, r25
+ 168:	c1 2d       	mov	r28, r1
+ 16a:	11 24       	eor	r1, r1
+ 16c:	c6 95       	lsr	r28
+ 16e:	c6 95       	lsr	r28
+ 170:	c6 95       	lsr	r28
+ 172:	c9 9f       	mul	r28, r25
+ 174:	91 2d       	mov	r25, r1
+ 176:	11 24       	eor	r1, r1
+ 178:	96 95       	lsr	r25
+ 17a:	96 95       	lsr	r25
+ 17c:	96 95       	lsr	r25
+ 17e:	99 0f       	add	r25, r25
+ 180:	89 2f       	mov	r24, r25
+ 182:	88 0f       	add	r24, r24
+ 184:	88 0f       	add	r24, r24
+ 186:	98 0f       	add	r25, r24
+ 188:	8c 2f       	mov	r24, r28
+ 18a:	89 1b       	sub	r24, r25
+ 18c:	80 5d       	subi	r24, 0xD0	; 208
+ 18e:	db df       	rcall	.-74     	; 0x146 <UARTPutChar>
+	UARTPutChar(0x30 + (byte % 10)); // Einer
+ 190:	cc 0f       	add	r28, r28
+ 192:	8c 2f       	mov	r24, r28
+ 194:	88 0f       	add	r24, r24
+ 196:	88 0f       	add	r24, r24
+ 198:	c8 0f       	add	r28, r24
+ 19a:	8d 2f       	mov	r24, r29
+ 19c:	8c 1b       	sub	r24, r28
+ 19e:	80 5d       	subi	r24, 0xD0	; 208
+ 1a0:	d2 df       	rcall	.-92     	; 0x146 <UARTPutChar>
+}
+ 1a2:	df 91       	pop	r29
+ 1a4:	cf 91       	pop	r28
+ 1a6:	08 95       	ret
+
+000001a8 <_exit>:
+ 1a8:	f8 94       	cli
+
+000001aa <__stop_program>:
+ 1aa:	ff cf       	rjmp	.-2      	; 0x1aa <__stop_program>
