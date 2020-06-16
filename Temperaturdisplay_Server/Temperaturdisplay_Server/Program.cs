@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
+using System.Threading;
 
 namespace Temperaturdisplay_Server
 {
@@ -10,6 +8,7 @@ namespace Temperaturdisplay_Server
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
         }
     }
 }
