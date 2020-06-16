@@ -1,0 +1,7 @@
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\bin\Debug\Temperaturdisplay_Server.exe.config
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\bin\Debug\Temperaturdisplay_Server.exe
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\bin\Debug\Temperaturdisplay_Server.pdb
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\obj\Debug\Temperaturdisplay_Server.csprojAssemblyReference.cache
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\obj\Debug\Temperaturdisplay_Server.csproj.CoreCompileInputs.cache
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\obj\Debug\Temperaturdisplay_Server.exe
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\obj\Debug\Temperaturdisplay_Server.pdb
