@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace Temperaturdisplay_Server
@@ -84,6 +85,8 @@ namespace Temperaturdisplay_Server
             runNonQuery("INSERT INTO `temperatur` (temperatur, datum, zeit) VALUES (" + temp + ", CURDATE(), CURTIME());");
         }
 
+
+
         /// <summary>
         /// Stellt eine Verbindung mit der Datenbank her
         /// </summary>
@@ -98,6 +101,20 @@ namespace Temperaturdisplay_Server
         {
             MySqlCommand cmd = new MySqlCommand(query, _conn);
             cmd.ExecuteNonQuery();
+        }
+
+        public static ArrayList runQueryAllData(string query)
+        {
+            MySqlCommand cmd = new MySqlCommand(query, _conn);
+            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            ArrayList data = new ArrayList();
+            while (dataReader.Read())
+            {
+                data.Add(dataReader.GetString("temp_ID") + ";" + dataReader.GetString("temperatur") + ";" + dataReader.GetString("datum") + ";" + dataReader.GetString("zeit"));
+            }
+            dataReader.Close();
+            return data;
         }
     }
 }
