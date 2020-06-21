@@ -107,19 +107,19 @@ namespace Temperaturdisplay_Server
         public static void newIncommingCommand(String command, Socket handler)
         {
             ArrayList answer = null;
-            if(command.Equals("akt"))
+            if (command.Equals("akt"))
             {
                 answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` ORDER BY `temp_id` DESC LIMIT 1;");
                 Console.WriteLine("(" + DateTime.Now.ToString("hh:mm:ss") + ") Folgende Daten wurden vom Client angefordert: {0}", answer[0].ToString());
                 SocketServer.Send(handler, answer[0].ToString());
             }
             else // Uhrzeit
-            if(Regex.IsMatch(command, @"^[F][R][A][M][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;][T][O][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;]$")) // Format: FRAM;hh:mm:ss;TO;hh:mm:ss;
+            if (Regex.IsMatch(command, @"^[F][R][A][M][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;][T][O][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;]$")) // Format: FRAM;hh:mm:ss;TO;hh:mm:ss;
             {
                 string answerString = "";
                 string[] values = command.Split(';');
                 answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `zeit` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\"");
-                foreach(object value in answer)
+                foreach (object value in answer)
                 {
                     answerString += value + "I";
                 }
@@ -136,6 +136,11 @@ namespace Temperaturdisplay_Server
                     answerString += value + "I";
                 }
                 SocketServer.Send(handler, answerString);
+            }
+            else
+            if (command.Equals("test"))
+            {
+                SocketServer.Send(handler, "Verbindung erfolgreich");
             }
             else
             {
