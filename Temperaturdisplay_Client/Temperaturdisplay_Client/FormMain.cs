@@ -43,7 +43,7 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Black;
-                    //userControlStartseite1.Visible = true;
+                    userControlStartseite1.Visible = true;
                     //userControlVerbindungsmanager1.Visible = false;
                     break;
                 case 1: // Verbindungsmanager
@@ -60,7 +60,7 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Black;
-                    //userControlStartseite1.Visible = false;
+                    userControlStartseite1.Visible = false;
                     //userControlVerbindungsmanager1.Visible = true;
                     break;
                 case 2: // AktDaten
@@ -69,7 +69,7 @@ namespace Temperaturdisplay_Client
                     buttonAktDaten.ForeColor = Color.Olive;
                     buttonDatenarchiv.ForeColor = Color.Black;
                     buttonEinstellungen.ForeColor = Color.Black;
-                    //userControlStartseite1.Visible = false;
+                    userControlStartseite1.Visible = false;
                     //userControlVerbindungsmanager1.Visible = false;
                     break;
                 case 3: // Datenarchiv
@@ -78,7 +78,7 @@ namespace Temperaturdisplay_Client
                     buttonAktDaten.ForeColor = Color.Black;
                     buttonDatenarchiv.ForeColor = Color.Olive;
                     buttonEinstellungen.ForeColor = Color.Black;
-                    //userControlStartseite1.Visible = false;
+                    userControlStartseite1.Visible = false;
                     //userControlVerbindungsmanager1.Visible = false;
                     break;
                 case 4: // Einstellungen
@@ -95,7 +95,7 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Olive;
-                    //userControlStartseite1.Visible = false;
+                    userControlStartseite1.Visible = false;
                     //userControlVerbindungsmanager1.Visible = false;
                     break;
                 default:

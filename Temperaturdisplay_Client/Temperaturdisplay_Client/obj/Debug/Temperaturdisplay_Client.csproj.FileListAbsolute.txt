@@ -7,3 +7,4 @@ C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_C
 C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Client\Temperaturdisplay_Client\obj\Debug\Temperaturdisplay_Client.csproj.CoreCompileInputs.cache
 C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Client\Temperaturdisplay_Client\obj\Debug\Temperaturdisplay_Client.exe
 C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Client\Temperaturdisplay_Client\obj\Debug\Temperaturdisplay_Client.pdb
+C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Client\Temperaturdisplay_Client\obj\Debug\Temperaturdisplay_Client.UserControlStartseite.resources
