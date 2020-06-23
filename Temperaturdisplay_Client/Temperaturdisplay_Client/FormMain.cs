@@ -12,7 +12,7 @@ namespace Temperaturdisplay_Client
 {
     public partial class FormMain : Form
     {
-        Controller controller;
+        private Controller controller = null;
         private bool connectionEstablished = false;
 
         public FormMain()
@@ -44,7 +44,7 @@ namespace Temperaturdisplay_Client
                     }
                     buttonEinstellungen.ForeColor = Color.Black;
                     userControlStartseite1.Visible = true;
-                    //userControlVerbindungsmanager1.Visible = false;
+                    userControlConnectionManager1.Visible = false;
                     break;
                 case 1: // Verbindungsmanager
                     buttonStartseite.ForeColor = Color.Black;
@@ -60,8 +60,9 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Black;
+                    userControlConnectionManager1.giveMeController(controller);
                     userControlStartseite1.Visible = false;
-                    //userControlVerbindungsmanager1.Visible = true;
+                    userControlConnectionManager1.Visible = true;
                     break;
                 case 2: // AktDaten
                     buttonStartseite.ForeColor = Color.Black;
@@ -70,7 +71,7 @@ namespace Temperaturdisplay_Client
                     buttonDatenarchiv.ForeColor = Color.Black;
                     buttonEinstellungen.ForeColor = Color.Black;
                     userControlStartseite1.Visible = false;
-                    //userControlVerbindungsmanager1.Visible = false;
+                    userControlConnectionManager1.Visible = false;
                     break;
                 case 3: // Datenarchiv
                     buttonStartseite.ForeColor = Color.Black;
@@ -79,7 +80,7 @@ namespace Temperaturdisplay_Client
                     buttonDatenarchiv.ForeColor = Color.Olive;
                     buttonEinstellungen.ForeColor = Color.Black;
                     userControlStartseite1.Visible = false;
-                    //userControlVerbindungsmanager1.Visible = false;
+                    userControlConnectionManager1.Visible = false;
                     break;
                 case 4: // Einstellungen
                     buttonStartseite.ForeColor = Color.Black;
@@ -96,7 +97,7 @@ namespace Temperaturdisplay_Client
                     }
                     buttonEinstellungen.ForeColor = Color.Olive;
                     userControlStartseite1.Visible = false;
-                    //userControlVerbindungsmanager1.Visible = false;
+                    userControlConnectionManager1.Visible = false;
                     break;
                 default:
                     break;

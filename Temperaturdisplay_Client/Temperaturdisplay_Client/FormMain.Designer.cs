@@ -37,6 +37,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.userControlStartseite1 = new Temperaturdisplay_Client.UserControlStartseite();
+            this.userControlConnectionManager1 = new Temperaturdisplay_Client.UserControlConnectionManager();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,11 +137,22 @@
             this.userControlStartseite1.Size = new System.Drawing.Size(739, 373);
             this.userControlStartseite1.TabIndex = 15;
             // 
+            // userControlConnectionManager1
+            // 
+            this.userControlConnectionManager1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlConnectionManager1.Location = new System.Drawing.Point(41, 57);
+            this.userControlConnectionManager1.Margin = new System.Windows.Forms.Padding(4);
+            this.userControlConnectionManager1.Name = "userControlConnectionManager1";
+            this.userControlConnectionManager1.Size = new System.Drawing.Size(739, 373);
+            this.userControlConnectionManager1.TabIndex = 16;
+            this.userControlConnectionManager1.Visible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 454);
+            this.Controls.Add(this.userControlConnectionManager1);
             this.Controls.Add(this.userControlStartseite1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
@@ -172,6 +184,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStatus;
         private UserControlStartseite userControlStartseite1;
+        private UserControlConnectionManager userControlConnectionManager1;
     }
 }
 
