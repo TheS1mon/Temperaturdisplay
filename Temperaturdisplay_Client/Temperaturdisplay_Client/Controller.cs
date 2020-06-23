@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
 namespace Temperaturdisplay_Client
 {
     public class Controller
     {
-        private ModelSocket model;
-        public Controller(ModelSocket model)
+        Model model;
+
+        public Controller(Model model)
         {
             this.model = model;
         }
 
+        /// <summary>
+        /// Sendet eine Nachricht an den Server und gibt die Antwort zurück
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="port"></param>
+        /// <param name="message"></param>
+        /// <returns>Antwort vom Server</returns>
         public string send(IPAddress ip, int port, string message)
         {
             return model.send(ip, port, message);

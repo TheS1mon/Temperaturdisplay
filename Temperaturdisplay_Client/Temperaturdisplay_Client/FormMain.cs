@@ -12,13 +12,17 @@ namespace Temperaturdisplay_Client
 {
     public partial class FormMain : Form
     {
+        Controller controller;
         private bool connectionEstablished = false;
-        private Controller controller;
 
-        public FormMain(Controller controller)
+        public FormMain()
+        {
+            InitializeComponent();
+        }
+
+        public FormMain(Controller controller) : this()
         {
             this.controller = controller;
-            InitializeComponent();
         }
 
         private void changeMenu(int selectedMenu /* 0=Startseite 1=Verbindungsmanager 2=aktuelle_Daten 3=Datenarchiv 4=Einstellungen */)
@@ -28,7 +32,7 @@ namespace Temperaturdisplay_Client
                 case 0: // Startseite
                     buttonStartseite.ForeColor = Color.Olive;
                     buttonVerbindungsmanager.ForeColor = Color.Black;
-                    if(this.connectionEstablished)
+                    if (this.connectionEstablished)
                     {
                         buttonAktDaten.ForeColor = Color.Black;
                         buttonDatenarchiv.ForeColor = Color.Black;
@@ -39,8 +43,8 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Black;
-                    userControlStartseite1.Visible = true;
-                    userControlVerbindungsmanager1.Visible = false;
+                    //userControlStartseite1.Visible = true;
+                    //userControlVerbindungsmanager1.Visible = false;
                     break;
                 case 1: // Verbindungsmanager
                     buttonStartseite.ForeColor = Color.Black;
@@ -56,8 +60,8 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Black;
-                    userControlStartseite1.Visible = false;
-                    userControlVerbindungsmanager1.Visible = true;
+                    //userControlStartseite1.Visible = false;
+                    //userControlVerbindungsmanager1.Visible = true;
                     break;
                 case 2: // AktDaten
                     buttonStartseite.ForeColor = Color.Black;
@@ -65,8 +69,8 @@ namespace Temperaturdisplay_Client
                     buttonAktDaten.ForeColor = Color.Olive;
                     buttonDatenarchiv.ForeColor = Color.Black;
                     buttonEinstellungen.ForeColor = Color.Black;
-                    userControlStartseite1.Visible = false;
-                    userControlVerbindungsmanager1.Visible = false;
+                    //userControlStartseite1.Visible = false;
+                    //userControlVerbindungsmanager1.Visible = false;
                     break;
                 case 3: // Datenarchiv
                     buttonStartseite.ForeColor = Color.Black;
@@ -74,8 +78,8 @@ namespace Temperaturdisplay_Client
                     buttonAktDaten.ForeColor = Color.Black;
                     buttonDatenarchiv.ForeColor = Color.Olive;
                     buttonEinstellungen.ForeColor = Color.Black;
-                    userControlStartseite1.Visible = false;
-                    userControlVerbindungsmanager1.Visible = false;
+                    //userControlStartseite1.Visible = false;
+                    //userControlVerbindungsmanager1.Visible = false;
                     break;
                 case 4: // Einstellungen
                     buttonStartseite.ForeColor = Color.Black;
@@ -91,8 +95,8 @@ namespace Temperaturdisplay_Client
                         buttonDatenarchiv.ForeColor = Color.DimGray;
                     }
                     buttonEinstellungen.ForeColor = Color.Olive;
-                    userControlStartseite1.Visible = false;
-                    userControlVerbindungsmanager1.Visible = false;
+                    //userControlStartseite1.Visible = false;
+                    //userControlVerbindungsmanager1.Visible = false;
                     break;
                 default:
                     break;

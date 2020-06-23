@@ -14,7 +14,7 @@ namespace Temperaturdisplay_Client
         [STAThread]
         static void Main()
         {
-            ModelSocket model = new ModelSocket();
+            Model model = new Model();
             Controller controller = new Controller(model);
 
             Application.EnableVisualStyles();
