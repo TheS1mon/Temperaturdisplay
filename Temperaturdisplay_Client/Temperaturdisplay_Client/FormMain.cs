@@ -45,6 +45,7 @@ namespace Temperaturdisplay_Client
                     buttonEinstellungen.ForeColor = Color.Black;
                     userControlStartseite1.Visible = true;
                     userControlConnectionManager1.Visible = false;
+                    userControlAktDaten1.Visible = false;
                     break;
                 case 1: // Verbindungsmanager
                     buttonStartseite.ForeColor = Color.Black;
@@ -63,6 +64,7 @@ namespace Temperaturdisplay_Client
                     userControlConnectionManager1.giveMeController(controller);
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = true;
+                    userControlAktDaten1.Visible = false;
                     break;
                 case 2: // AktDaten
                     buttonStartseite.ForeColor = Color.Black;
@@ -72,6 +74,8 @@ namespace Temperaturdisplay_Client
                     buttonEinstellungen.ForeColor = Color.Black;
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = false;
+                    userControlAktDaten1.giveMeController(controller);
+                    userControlAktDaten1.Visible = true;
                     break;
                 case 3: // Datenarchiv
                     buttonStartseite.ForeColor = Color.Black;
@@ -81,6 +85,7 @@ namespace Temperaturdisplay_Client
                     buttonEinstellungen.ForeColor = Color.Black;
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = false;
+                    userControlAktDaten1.Visible = false;
                     break;
                 case 4: // Einstellungen
                     buttonStartseite.ForeColor = Color.Black;
@@ -98,6 +103,7 @@ namespace Temperaturdisplay_Client
                     buttonEinstellungen.ForeColor = Color.Olive;
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = false;
+                    userControlAktDaten1.Visible = false;
                     break;
                 default:
                     break;
@@ -135,6 +141,7 @@ namespace Temperaturdisplay_Client
             {
                 this.toolStripStatusLabelConnection.Text = "Verbunden mit: " + Properties.Settings.Default.connectedTo;
                 userControlStartseite1.enableControls();
+                userControlStartseite1.checkFirstBox();
                 buttonAktDaten.Enabled = true;
                 buttonDatenarchiv.Enabled = true;
                 if(buttonAktDaten.ForeColor == Color.DimGray)

@@ -28,5 +28,15 @@ namespace Temperaturdisplay_Client
             checkBox2.Enabled = false;
             checkBox3.Enabled = false;
         }
+
+        public void checkFirstBox()
+        {
+            checkBox1.Checked = true;
+        }
+
+        public void uncheckFirstBox()
+        {
+            checkBox1.Checked = false;
+        }
     }
 }

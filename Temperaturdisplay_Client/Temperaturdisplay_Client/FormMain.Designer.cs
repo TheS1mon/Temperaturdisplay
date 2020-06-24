@@ -35,11 +35,12 @@
             this.buttonDatenarchiv = new System.Windows.Forms.Button();
             this.buttonAktDaten = new System.Windows.Forms.Button();
             this.buttonVerbindungsmanager = new System.Windows.Forms.Button();
-            this.userControlStartseite1 = new Temperaturdisplay_Client.UserControlStartseite();
-            this.userControlConnectionManager1 = new Temperaturdisplay_Client.UserControlConnectionManager();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelConnection = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.userControlAktDaten1 = new Temperaturdisplay_Client.UserControlAktDaten();
+            this.userControlConnectionManager1 = new Temperaturdisplay_Client.UserControlConnectionManager();
+            this.userControlStartseite1 = new Temperaturdisplay_Client.UserControlStartseite();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,30 +114,11 @@
             this.buttonVerbindungsmanager.UseVisualStyleBackColor = true;
             this.buttonVerbindungsmanager.Click += new System.EventHandler(this.buttonVerbindungsmanager_Click);
             // 
-            // userControlStartseite1
-            // 
-            this.userControlStartseite1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlStartseite1.Location = new System.Drawing.Point(41, 57);
-            this.userControlStartseite1.Margin = new System.Windows.Forms.Padding(4);
-            this.userControlStartseite1.Name = "userControlStartseite1";
-            this.userControlStartseite1.Size = new System.Drawing.Size(739, 373);
-            this.userControlStartseite1.TabIndex = 15;
-            // 
-            // userControlConnectionManager1
-            // 
-            this.userControlConnectionManager1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlConnectionManager1.Location = new System.Drawing.Point(41, 57);
-            this.userControlConnectionManager1.Margin = new System.Windows.Forms.Padding(4);
-            this.userControlConnectionManager1.Name = "userControlConnectionManager1";
-            this.userControlConnectionManager1.Size = new System.Drawing.Size(739, 373);
-            this.userControlConnectionManager1.TabIndex = 16;
-            this.userControlConnectionManager1.Visible = false;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelConnection});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 415);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(834, 22);
             this.statusStrip1.TabIndex = 17;
@@ -153,11 +135,41 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // userControlAktDaten1
+            // 
+            this.userControlAktDaten1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlAktDaten1.Location = new System.Drawing.Point(41, 57);
+            this.userControlAktDaten1.Margin = new System.Windows.Forms.Padding(4);
+            this.userControlAktDaten1.Name = "userControlAktDaten1";
+            this.userControlAktDaten1.Size = new System.Drawing.Size(737, 371);
+            this.userControlAktDaten1.TabIndex = 18;
+            this.userControlAktDaten1.Visible = false;
+            // 
+            // userControlConnectionManager1
+            // 
+            this.userControlConnectionManager1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlConnectionManager1.Location = new System.Drawing.Point(41, 57);
+            this.userControlConnectionManager1.Margin = new System.Windows.Forms.Padding(4);
+            this.userControlConnectionManager1.Name = "userControlConnectionManager1";
+            this.userControlConnectionManager1.Size = new System.Drawing.Size(739, 373);
+            this.userControlConnectionManager1.TabIndex = 16;
+            this.userControlConnectionManager1.Visible = false;
+            // 
+            // userControlStartseite1
+            // 
+            this.userControlStartseite1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlStartseite1.Location = new System.Drawing.Point(41, 57);
+            this.userControlStartseite1.Margin = new System.Windows.Forms.Padding(4);
+            this.userControlStartseite1.Name = "userControlStartseite1";
+            this.userControlStartseite1.Size = new System.Drawing.Size(739, 373);
+            this.userControlStartseite1.TabIndex = 15;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 437);
+            this.ClientSize = new System.Drawing.Size(834, 450);
+            this.Controls.Add(this.userControlAktDaten1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.userControlConnectionManager1);
             this.Controls.Add(this.userControlStartseite1);
@@ -192,6 +204,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelConnection;
         private System.Windows.Forms.Timer timer1;
+        private UserControlAktDaten userControlAktDaten1;
     }
 }
 
