@@ -68,6 +68,12 @@
     <Compile Include="UserControlConnectionManager.Designer.cs">
       <DependentUpon>UserControlConnectionManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlDatenarchiv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlDatenarchiv.Designer.cs">
+      <DependentUpon>UserControlDatenarchiv.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlStartseite.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlConnectionManager.resx">
       <DependentUpon>UserControlConnectionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlDatenarchiv.resx">
+      <DependentUpon>UserControlDatenarchiv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlStartseite.resx">
       <DependentUpon>UserControlStartseite.cs</DependentUpon>

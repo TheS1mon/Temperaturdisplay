@@ -46,6 +46,7 @@ namespace Temperaturdisplay_Client
                     userControlStartseite1.Visible = true;
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.Visible = false;
+                    userControlAktDaten1.stoppeAufzeichnung();
                     break;
                 case 1: // Verbindungsmanager
                     buttonStartseite.ForeColor = Color.Black;
@@ -65,6 +66,7 @@ namespace Temperaturdisplay_Client
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = true;
                     userControlAktDaten1.Visible = false;
+                    userControlAktDaten1.stoppeAufzeichnung();
                     break;
                 case 2: // AktDaten
                     buttonStartseite.ForeColor = Color.Black;
@@ -86,6 +88,7 @@ namespace Temperaturdisplay_Client
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.Visible = false;
+                    userControlAktDaten1.stoppeAufzeichnung();
                     break;
                 case 4: // Einstellungen
                     buttonStartseite.ForeColor = Color.Black;
@@ -104,6 +107,7 @@ namespace Temperaturdisplay_Client
                     userControlStartseite1.Visible = false;
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.Visible = false;
+                    userControlAktDaten1.stoppeAufzeichnung();
                     break;
                 default:
                     break;

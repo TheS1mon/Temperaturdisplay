@@ -113,12 +113,12 @@ namespace Temperaturdisplay_Server
                 Console.WriteLine("(" + DateTime.Now.ToString("hh:mm:ss") + ") Folgende Daten wurden vom Client angefordert: {0}", answer[0].ToString());
                 SocketServer.Send(handler, answer[0].ToString());
             }
-            else // Uhrzeit
-            if (Regex.IsMatch(command, @"^[F][R][A][M][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;][T][O][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;]$")) // Format: FRAM;hh:mm:ss;TO;hh:mm:ss;
+            else // Uhrzeit und Datum
+            if (Regex.IsMatch(command, @"^[F][R][A][M][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;][T][O][;][0-9]{2}[\:][0-9]{2}[\:][0-9]{2}[;][A][N][D][;][0-9]{4}[\-][0-9]{2}[\-][0-9]{2}[;][T][O][;][0-9]{4}[\-][0-9]{2}[\-][0-9]{2}[;]$")) // Format: FRAM;hh:mm:ss;TO;hh:mm:ss;AND;yyyy-mm-dd;TO;yyyy-mm-dd;
             {
                 string answerString = "";
                 string[] values = command.Split(';');
-                answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `zeit` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\"");
+                answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `zeit` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\" AND `datum` BETWEEN \"" + values[5] + "\" AND \"" + values[7] + "\"");
                 foreach (object value in answer)
                 {
                     answerString += value + "I";
