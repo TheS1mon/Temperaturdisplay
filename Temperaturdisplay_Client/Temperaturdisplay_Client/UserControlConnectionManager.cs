@@ -50,6 +50,7 @@ namespace Temperaturdisplay_Client
                 {
                     connectionSuccessfull = false;
                 }
+                Properties.Settings.Default.connectedTo = textBoxIP.Text + ":" + textBoxPort.Text;
             }
             catch (Exception ex)
             {

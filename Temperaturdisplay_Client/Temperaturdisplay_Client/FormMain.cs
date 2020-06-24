@@ -128,5 +128,26 @@ namespace Temperaturdisplay_Client
         {
             this.changeMenu(4);
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (!Properties.Settings.Default.connectedTo.Equals("noone"))
+            {
+                this.toolStripStatusLabelConnection.Text = "Verbunden mit: " + Properties.Settings.Default.connectedTo;
+                userControlStartseite1.enableControls();
+                buttonAktDaten.Enabled = true;
+                buttonDatenarchiv.Enabled = true;
+                if(buttonAktDaten.ForeColor == Color.DimGray)
+                {
+                    buttonAktDaten.ForeColor = Color.Black;
+                    buttonDatenarchiv.ForeColor = Color.Black;
+                }
+                this.connectionEstablished = true;
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

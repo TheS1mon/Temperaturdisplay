@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonEinstellungen = new System.Windows.Forms.Button();
             this.buttonStartseite = new System.Windows.Forms.Button();
             this.buttonDatenarchiv = new System.Windows.Forms.Button();
             this.buttonAktDaten = new System.Windows.Forms.Button();
             this.buttonVerbindungsmanager = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.userControlStartseite1 = new Temperaturdisplay_Client.UserControlStartseite();
             this.userControlConnectionManager1 = new Temperaturdisplay_Client.UserControlConnectionManager();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelConnection = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,23 +113,6 @@
             this.buttonVerbindungsmanager.UseVisualStyleBackColor = true;
             this.buttonVerbindungsmanager.Click += new System.EventHandler(this.buttonVerbindungsmanager_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 432);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(834, 22);
-            this.statusStrip1.TabIndex = 14;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabelStatus
-            // 
-            this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
-            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(96, 17);
-            this.toolStripStatusLabelStatus.Text = "Nicht verbunden";
-            // 
             // userControlStartseite1
             // 
             this.userControlStartseite1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,21 +132,42 @@
             this.userControlConnectionManager1.TabIndex = 16;
             this.userControlConnectionManager1.Visible = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelConnection});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 415);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(834, 22);
+            this.statusStrip1.TabIndex = 17;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelConnection
+            // 
+            this.toolStripStatusLabelConnection.Name = "toolStripStatusLabelConnection";
+            this.toolStripStatusLabelConnection.Size = new System.Drawing.Size(96, 17);
+            this.toolStripStatusLabelConnection.Text = "Nicht verbunden";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 454);
+            this.ClientSize = new System.Drawing.Size(834, 437);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.userControlConnectionManager1);
             this.Controls.Add(this.userControlStartseite1);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonEinstellungen);
             this.Controls.Add(this.buttonStartseite);
             this.Controls.Add(this.buttonDatenarchiv);
             this.Controls.Add(this.buttonAktDaten);
             this.Controls.Add(this.buttonVerbindungsmanager);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -181,10 +187,11 @@
         private System.Windows.Forms.Button buttonDatenarchiv;
         private System.Windows.Forms.Button buttonAktDaten;
         private System.Windows.Forms.Button buttonVerbindungsmanager;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStatus;
         private UserControlStartseite userControlStartseite1;
         private UserControlConnectionManager userControlConnectionManager1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelConnection;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
