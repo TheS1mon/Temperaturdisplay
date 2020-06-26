@@ -105,15 +105,19 @@ namespace Temperaturdisplay_Server
 
         public static ArrayList runQueryAllData(string query)
         {
-            MySqlCommand cmd = new MySqlCommand(query, _conn);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
             ArrayList data = new ArrayList();
-            while (dataReader.Read())
+            try
             {
-                data.Add(dataReader.GetString("temp_ID") + ";" + dataReader.GetString("temperatur") + ";" + dataReader.GetString("datum") + ";" + dataReader.GetString("zeit"));
+                MySqlCommand cmd = new MySqlCommand(query, _conn);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    data.Add(dataReader.GetString("temp_ID") + ";" + dataReader.GetString("temperatur") + ";" + dataReader.GetString("datum") + ";" + dataReader.GetString("zeit"));
+                }
+                dataReader.Close();
             }
-            dataReader.Close();
+            catch (Exception) { }
             return data;
         }
     }

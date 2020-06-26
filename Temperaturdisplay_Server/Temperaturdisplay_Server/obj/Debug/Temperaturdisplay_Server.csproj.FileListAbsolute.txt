@@ -28,4 +28,3 @@ C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_S
 C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\obj\Debug\Temperaturdisplay_Server.csproj.CopyComplete
-C:\Users\Simon\Desktop\Programmierprojekte\Temperaturdisplay\Temperaturdisplay_Server\Temperaturdisplay_Server\obj\Debug\Temperaturdisplay_Server.csprojAssemblyReference.cache

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Temperaturdisplay_Client.Controller">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAIAAA=</HashCode>
+      <FileName>Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.FormMain">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQUAQAAAACEEAAWAACCAAAACQAAAKAAIQAEIAQAAgAE=</HashCode>
+      <FileName>FormMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.FormPictureBox">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADAAAIAAAACAAAACAAgIAAAAAEAAAABAAAA=</HashCode>
+      <FileName>FormPictureBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.Model">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEEAAAAAQACAAEAAAAAAAAACAAAQAAAAQAAgAEE=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.StateObject" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACCAEAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.Program">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.UserControlAktDaten">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAIAAAAWAEABEAAACAAwACABQCIABABEAQAIAgACA=</HashCode>
+      <FileName>UserControlAktDaten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.UserControlConnectionManager">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAEAAAACAAABEAAAKIABASAAAAAABABBAAAQIAAAA=</HashCode>
+      <FileName>UserControlConnectionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.UserControlDatenarchiv">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAQEASAEABEAAASAAwATABQGACBAVBASAIAAACA=</HashCode>
+      <FileName>UserControlDatenarchiv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.UserControlStartseite">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACQAABAAgACAAAACAAAAAAAAAAAAAQFACAA=</HashCode>
+      <FileName>UserControlStartseite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.Properties.Resources">
+    <Position X="2" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIABAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Temperaturdisplay_Client.Properties.Settings">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAACAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Temperaturdisplay_Client.Temperatur" Collapsed="true">
+    <Position X="3.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>FormPictureBox.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Temperaturdisplay_Client.PlottedPoint" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>FormPictureBox.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

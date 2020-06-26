@@ -118,7 +118,7 @@ namespace Temperaturdisplay_Server
             {
                 string answerString = "";
                 string[] values = command.Split(';');
-                answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `zeit` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\" AND `datum` BETWEEN \"" + values[5] + "\" AND \"" + values[7] + "\"");
+                answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `zeit` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\" AND `datum` BETWEEN \"" + values[5] + "\" AND \"" + values[7] + "\";");
                 foreach (object value in answer)
                 {
                     answerString += value + "I";
@@ -130,7 +130,7 @@ namespace Temperaturdisplay_Server
             {
                 string answerString = "";
                 string[] values = command.Split(';');
-                answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `datum` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\"");
+                answer = SQLConnector.runQueryAllData("SELECT *  FROM `temperatur` WHERE `datum` BETWEEN \"" + values[1] + "\" AND \"" + values[3] + "\";");
                 foreach (object value in answer)
                 {
                     answerString += value + "I";

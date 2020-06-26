@@ -47,6 +47,7 @@ namespace Temperaturdisplay_Client
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.Visible = false;
                     userControlAktDaten1.stoppeAufzeichnung();
+                    userControlDatenarchiv1.Visible = false;
                     break;
                 case 1: // Verbindungsmanager
                     buttonStartseite.ForeColor = Color.Black;
@@ -67,6 +68,7 @@ namespace Temperaturdisplay_Client
                     userControlConnectionManager1.Visible = true;
                     userControlAktDaten1.Visible = false;
                     userControlAktDaten1.stoppeAufzeichnung();
+                    userControlDatenarchiv1.Visible = false;
                     break;
                 case 2: // AktDaten
                     buttonStartseite.ForeColor = Color.Black;
@@ -78,6 +80,7 @@ namespace Temperaturdisplay_Client
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.giveMeController(controller);
                     userControlAktDaten1.Visible = true;
+                    userControlDatenarchiv1.Visible = false;
                     break;
                 case 3: // Datenarchiv
                     buttonStartseite.ForeColor = Color.Black;
@@ -89,6 +92,8 @@ namespace Temperaturdisplay_Client
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.Visible = false;
                     userControlAktDaten1.stoppeAufzeichnung();
+                    userControlDatenarchiv1.Visible = true;
+                    userControlDatenarchiv1.giveMeController(controller);
                     break;
                 case 4: // Einstellungen
                     buttonStartseite.ForeColor = Color.Black;
@@ -108,6 +113,7 @@ namespace Temperaturdisplay_Client
                     userControlConnectionManager1.Visible = false;
                     userControlAktDaten1.Visible = false;
                     userControlAktDaten1.stoppeAufzeichnung();
+                    userControlDatenarchiv1.Visible = false;
                     break;
                 default:
                     break;
@@ -136,7 +142,7 @@ namespace Temperaturdisplay_Client
 
         private void buttonEinstellungen_Click(object sender, EventArgs e)
         {
-            this.changeMenu(4);
+            Application.Exit();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

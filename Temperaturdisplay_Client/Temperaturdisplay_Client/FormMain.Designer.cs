@@ -38,6 +38,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelConnection = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.userControlDatenarchiv1 = new Temperaturdisplay_Client.UserControlDatenarchiv();
             this.userControlAktDaten1 = new Temperaturdisplay_Client.UserControlAktDaten();
             this.userControlConnectionManager1 = new Temperaturdisplay_Client.UserControlConnectionManager();
             this.userControlStartseite1 = new Temperaturdisplay_Client.UserControlStartseite();
@@ -60,7 +61,7 @@
             this.buttonEinstellungen.Name = "buttonEinstellungen";
             this.buttonEinstellungen.Size = new System.Drawing.Size(143, 28);
             this.buttonEinstellungen.TabIndex = 12;
-            this.buttonEinstellungen.Text = "Einstellungen";
+            this.buttonEinstellungen.Text = "Schließen";
             this.buttonEinstellungen.UseVisualStyleBackColor = true;
             this.buttonEinstellungen.Click += new System.EventHandler(this.buttonEinstellungen_Click);
             // 
@@ -118,7 +119,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelConnection});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 437);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(834, 22);
             this.statusStrip1.TabIndex = 17;
@@ -134,6 +135,16 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // userControlDatenarchiv1
+            // 
+            this.userControlDatenarchiv1.Font = new System.Drawing.Font("PMingLiU-ExtB", 12F);
+            this.userControlDatenarchiv1.Location = new System.Drawing.Point(41, 57);
+            this.userControlDatenarchiv1.Margin = new System.Windows.Forms.Padding(4);
+            this.userControlDatenarchiv1.Name = "userControlDatenarchiv1";
+            this.userControlDatenarchiv1.Size = new System.Drawing.Size(737, 371);
+            this.userControlDatenarchiv1.TabIndex = 19;
+            this.userControlDatenarchiv1.Visible = false;
             // 
             // userControlAktDaten1
             // 
@@ -168,7 +179,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 450);
+            this.ClientSize = new System.Drawing.Size(834, 459);
+            this.Controls.Add(this.userControlDatenarchiv1);
             this.Controls.Add(this.userControlAktDaten1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.userControlConnectionManager1);
@@ -205,6 +217,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelConnection;
         private System.Windows.Forms.Timer timer1;
         private UserControlAktDaten userControlAktDaten1;
+        private UserControlDatenarchiv userControlDatenarchiv1;
     }
 }
 
